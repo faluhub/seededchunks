@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "me.falu.seededchunks.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "IntegratedServerMixin",
+    "ServerChunkManagerMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "id": "seededchunks",
+  "version": "${version}",
+  "name": "SeededChunks",
+  "description": "Makes it so every chunk uses a different seed.",
+  "authors": ["falu"],
+  "contact": {
+    "homepage": "https://github.com/faluhub"
+  },
+  "license": "MIT",
+  "environment": "*",
+  "entrypoints": {
+    "client": ["me.falu.seededchunks.SeededChunks"]
+  },
+  "mixins": ["seededchunks.mixins.json"],
+  "accessWidener": "seededchunks.accesswidener",
+  "depends": {
+    "minecraft": "1.16.1"
+  }
+}
