@@ -1,6 +1,7 @@
 package me.falu.seededchunks.mixin;
 
 import me.falu.seededchunks.SeededChunks;
+import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.world.ServerChunkManager;
 import net.minecraft.server.world.ServerWorld;
@@ -15,8 +16,6 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-
-import java.util.concurrent.atomic.AtomicReference;
 
 @Mixin(ServerChunkManager.class)
 public abstract class ServerChunkManagerMixin {
@@ -51,6 +50,14 @@ public abstract class ServerChunkManagerMixin {
                                 referencePos.set(referenceChunkPos.getStartX() + relativeX, m, referenceChunkPos.getStartZ() + relativeZ);
                                 mutable.set(k, m, l);
                                 chunk.setBlockState(mutable, referenceChunk.getBlockState(referencePos), false);
+                                BlockEntity blockEntity = referenceChunk.getBlockEntity(referencePos);
+                                if (blockEntity != null) {
+                                    BlockEntity blockEntity1 = blockEntity.getType().instantiate();
+                                    if (blockEntity1 != null) {
+                                        blockEntity1.setLocation(world, mutable);
+                                        chunk.setBlockEntity(mutable, blockEntity1);
+                                    }
+                                }
                             }
                         }
                     }
