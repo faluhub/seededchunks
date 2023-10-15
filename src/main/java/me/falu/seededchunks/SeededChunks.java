@@ -18,6 +18,7 @@ public class SeededChunks implements ClientModInitializer {
     public static final String MOD_VERSION = String.valueOf(MOD_CONTAINER.getMetadata().getVersion());
     public static final Logger LOGGER = LogManager.getLogger(MOD_NAME);
     public static final LongSet FLIPPED_CHUNKS = new LongOpenHashSet();
+    public static final LongSet BUILT_CHUNKS = new LongOpenHashSet();
 
     public static void log(Object msg) {
         LOGGER.log(Level.INFO, msg);
