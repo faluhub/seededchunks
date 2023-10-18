@@ -1,5 +1,6 @@
 package me.falu.seededchunks;
 
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.server.integrated.IntegratedServer;
 import net.minecraft.util.Util;
 import net.minecraft.util.crash.CrashReport;
@@ -34,8 +35,8 @@ public class IntegratedServerWatchdog implements Runnable {
             long l = this.server.getServerStartTime();
             long m = Util.getMeasuringTimeMs();
             long n = m - l;
-            if (n > this.maxTickTime) {
-                LOGGER.fatal("A single server tick took {} seconds (should be max {})", String.format(Locale.ROOT, "%.2f", (float) n / 1000.0f), String.format(Locale.ROOT, "%.2f", Float.valueOf(0.05f)));
+            if (MinecraftClient.getInstance().options.keyAdvancements.wasPressed()) {
+                LOGGER.fatal("A single server tick took {} seconds (should be max {})", String.format(Locale.ROOT, "%.2f", (float) n / 1000.0F), String.format(Locale.ROOT, "%.2f", 0.05F));
                 LOGGER.fatal("Considering it to be crashed, server will forcibly shutdown.");
                 ThreadMXBean threadMXBean = ManagementFactory.getThreadMXBean();
                 ThreadInfo[] threadInfos = threadMXBean.dumpAllThreads(true, true);
@@ -60,8 +61,6 @@ public class IntegratedServerWatchdog implements Runnable {
                 }
                 this.shutdown();
             }
-            try { Thread.sleep(l + this.maxTickTime - m); }
-            catch (InterruptedException ignored) {}
         }
     }
 
@@ -73,7 +72,7 @@ public class IntegratedServerWatchdog implements Runnable {
                 public void run() {
                     Runtime.getRuntime().halt(1);
                 }
-            }, 10000L);
+            }, 10_000L);
             System.exit(1);
         } catch (Throwable throwable) {
             Runtime.getRuntime().halt(1);
