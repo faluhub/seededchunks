@@ -2,6 +2,7 @@ package me.falu.seededchunks.mixin;
 
 import com.mojang.datafixers.util.Either;
 import me.falu.seededchunks.SeededChunks;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.entity.BlockEntity;
@@ -35,6 +36,7 @@ public abstract class ServerChunkManagerMixin {
 
     @Unique
     private void log(String origin, String msg) {
+        if (!FabricLoader.getInstance().isDevelopmentEnvironment()) { return; }
         SeededChunks.log("[" + origin + "] " + msg);
     }
 
