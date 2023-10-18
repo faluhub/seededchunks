@@ -17,16 +17,13 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.concurrent.TimeUnit;
 
 public class IntegratedServerWatchdog implements Runnable {
     private static final Logger LOGGER = LogManager.getLogger();
     private final IntegratedServer server;
-    private final long maxTickTime;
 
     public IntegratedServerWatchdog(IntegratedServer server) {
         this.server = server;
-        this.maxTickTime = TimeUnit.MINUTES.toMillis(1L);
     }
 
     @Override
