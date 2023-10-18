@@ -34,7 +34,7 @@ public class SeededChunks implements ClientModInitializer {
     }
 
     public static ChunkPos createNewPos(ChunkPos pos) {
-        int bounds = 5000;
+        int bounds = 1000;
         Random random = new Random(pos.toLong());
         return new ChunkPos(random.nextInt(-bounds, bounds), random.nextInt(-bounds, bounds));
     }
