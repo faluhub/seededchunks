@@ -3,7 +3,7 @@
   "id": "seededchunks",
   "version": "${version}",
   "name": "SeededChunks",
-  "description": "Makes it so every chunk uses a different seed.",
+  "description": "Makes it so every chunk uses a different seed. (Not really)",
   "authors": ["falu"],
   "contact": {
     "homepage": "https://github.com/faluhub"
@@ -14,8 +14,7 @@
     "client": ["me.falu.seededchunks.SeededChunks"]
   },
   "mixins": ["seededchunks.mixins.json"],
-  "accessWidener": "seededchunks.accesswidener",
   "depends": {
-    "minecraft": "1.16.1"
+    "minecraft": "1.20.2"
   }
 }

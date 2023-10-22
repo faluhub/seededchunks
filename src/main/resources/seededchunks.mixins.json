@@ -4,8 +4,10 @@
   "package": "me.falu.seededchunks.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "IntegratedServerMixin",
-    "ServerChunkManagerMixin"
+    "access.ChunkNoiseSamplerAccessor",
+
+    "ChunkMixin",
+    "ChunkNoiseSamplerMixin"
   ],
   "injectors": {
     "defaultRequire": 1
