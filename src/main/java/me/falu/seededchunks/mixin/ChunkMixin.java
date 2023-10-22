@@ -22,7 +22,7 @@ public abstract class ChunkMixin {
 
     @Inject(method = "populateBiomes", at = @At("HEAD"), cancellable = true)
     private void applyChunkOffset(BiomeSupplier biomeSupplier, MultiNoiseUtil.MultiNoiseSampler sampler, CallbackInfo ci) {
-        ChunkPos pos = SeededChunks.randomize(this.getPos());
+        ChunkPos pos = SeededChunks.randomizeChunk(this.getPos());
         int biomeX = BiomeCoords.fromBlock(pos.getStartX());
         int biomeZ = BiomeCoords.fromBlock(pos.getStartZ());
         HeightLimitView heightLimitView = this.getHeightLimitView();

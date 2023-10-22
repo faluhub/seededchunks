@@ -20,7 +20,7 @@ public class ChunkNoiseSamplerMixin {
         GenerationShapeConfig genShapeConfig = chunkGeneratorSettings.generationShapeConfig().trimHeight(chunk);
         int cellCount = 16 / genShapeConfig.horizontalCellBlockCount();
         ChunkPos original = chunk.getPos();
-        ChunkPos pos = SeededChunks.randomize(original);
+        ChunkPos pos = SeededChunks.randomizeChunk(original);
         ChunkNoiseSampler sampler = new ChunkNoiseSampler(cellCount, noiseConfig, pos.getStartX(), pos.getStartZ(), genShapeConfig, beardifying, chunkGeneratorSettings, fluidLevelSampler, blender);
         ((ChunkNoiseSamplerAccessor) sampler).setAquiferSampler(new OffsetAquiferSampler(sampler.getAquiferSampler(), pos.getStartX() - original.getStartX(), pos.getStartZ() - original.getStartZ()));
         cir.setReturnValue(sampler);
