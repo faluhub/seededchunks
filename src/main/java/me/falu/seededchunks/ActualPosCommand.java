@@ -28,6 +28,7 @@ public class ActualPosCommand {
         );
     }
 
+    @SuppressWarnings("SameReturnValue")
     private static int execute(CommandContext<ServerCommandSource> context, ColumnPos columnPos) {
         ChunkPos pos = SeededChunks.randomizeChunk(columnPos);
         context.getSource().sendFeedback(() -> Text.literal("Actual pos: [" + pos.x + ", " + pos.z + "] (" + pos.getStartX() + ", " + pos.getStartZ() + ")"), false);
