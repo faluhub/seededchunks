@@ -6,6 +6,7 @@ import net.fabricmc.loader.api.ModContainer;
 
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
+import net.minecraft.util.math.ColumnPos;
 import org.apache.logging.log4j.*;
 
 import java.util.Random;
@@ -17,6 +18,10 @@ public class SeededChunks implements ClientModInitializer {
     public static final Logger LOGGER = LogManager.getLogger(MOD_NAME);
 
     private static final int BOUND = 50000;
+
+    public static ChunkPos randomizeChunk(ColumnPos pos) {
+        return randomizeChunk(pos.toChunkPos());
+    }
 
     public static ChunkPos randomizeChunk(ChunkPos pos) {
         Random random = new Random(pos.toLong());
