@@ -2,7 +2,6 @@ package me.falu.seededchunks.mixin;
 
 import com.mojang.brigadier.CommandDispatcher;
 import me.falu.seededchunks.ActualPosCommand;
-import net.minecraft.command.CommandRegistryAccess;
 import net.minecraft.server.command.CommandManager;
 import net.minecraft.server.command.ServerCommandSource;
 import org.spongepowered.asm.mixin.Final;

@@ -28,16 +28,6 @@ public class SeededChunks implements ClientModInitializer {
         return new ChunkPos(random.nextInt(-BOUND, BOUND), random.nextInt(-BOUND, BOUND));
     }
 
-    public static BlockPos randomizeBlock(BlockPos pos) {
-        ChunkPos original = new ChunkPos(pos);
-        int offsetX = pos.getX() - original.getStartX();
-        int offsetZ = pos.getZ() - original.getStartZ();
-        ChunkPos other = SeededChunks.randomizeChunk(original);
-        int x = other.getStartX() + offsetX;
-        int z = other.getStartZ() + offsetZ;
-        return new BlockPos(x, pos.getY(), z);
-    }
-
     public static void log(Object msg) {
         LOGGER.log(Level.INFO, msg);
     }
